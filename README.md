@@ -59,22 +59,22 @@ Buka menu **Hosted zones**, lalu pilih nama domain lab yang tersedia (`vocareum.
 - **Health check ID**: *(kosongkan)*
 - **Record ID**: `FailoverSecondary`
 
-![Route 53 Records](images/01-route53-records.jpg)
+![Route 53 Records](images/01-route53-records.png)
 
 ### Task 4: Verifikasi Resolusi DNS
 1. Salin nama A Record yang telah dibuat (`http://www.XXXXXX.vocareum.training/cafe/`) dan buka di browser tab baru.
 2. Pastikan halaman web café terbuka dan bagian **Server Information** menunjukkan server berjalan di **Availability Zone: us-west-2a**.
 
-![Primary Website](images/02-primary-website.jpg)
+![Primary Website](images/02-primary-website.png)
 
 ### Task 5: Pengujian Fungsi Failover
 1. Buka konsol EC2, pilih `CafeInstance1`, lalu lakukan **Instance state > Stop instance** untuk menghentikan server utama.
-   ![EC2 Stopped](images/03-ec2-stopped.jpg)
+   ![EC2 Stopped](images/03-ec2-stopped.png)
 2. Buka konsol Route 53 menu **Health checks** dan tunggu beberapa saat hingga status `Primary-Website-Health` berubah dari *Healthy* menjadi **Unhealthy**.
    ![Health Check Unhealthy](images/04-health-check-unhealthy.png)
 3. Kembali ke browser tab tempat web café dibuka, lalu lakukan **refresh** halaman.
 4. Perhatikan bagian **Server Information** pada web. Informasi server akan otomatis berpindah ke **Availability Zone: us-west-2b** (Secondary Instance) tanpa perlu mengubah URL domain.
-   ![Secondary Website](images/05-secondary-failover.jpg)
+   ![Secondary Website](images/05-secondary-failover.png)
 
 ---
 
